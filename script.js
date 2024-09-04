@@ -81,6 +81,9 @@ function playGame() {
     else if (humanScore < computerScore) {
         console.log('You lose, better luck next time')
     }
+    else (humanScore == computerScore) {
+        console.log('It\s a Draw!')
+    }
 }
 
 playGame();
