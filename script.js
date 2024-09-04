@@ -56,7 +56,8 @@ function playRound(humanChoice, computerChoice) {
         console.log('It\'s a tie!')
     }
     else {
-        alert('Invalid input! Please enter a choice of ROCK, PAPER or SCISSORS.')
+        alert('Invalid input.')
+        return (playRound(getComputerChoice(), getHumanChoice()))
     }
 }
 
