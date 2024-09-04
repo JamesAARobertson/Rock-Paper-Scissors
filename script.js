@@ -66,7 +66,7 @@ function playRound(humanChoice, computerChoice) {
 
 
 function playGame() {
-    for(i=1; i<=5; i++) {
+    for(let i=1; i<=5; i++) {
         console.log(`Round ${i}`)
         let humanSelection = getHumanChoice();
         let computerSelection = getComputerChoice();
@@ -81,11 +81,10 @@ function playGame() {
     else if (humanScore < computerScore) {
         console.log('You lose, better luck next time')
     }
-    else (humanScore == computerScore) {
-        console.log('It\s a Draw!')
-    }
+    else if (humanScore == computerScore) {
+        console.log('It\'s a Draw!')
+    };
 }
 
 playGame();
 
-// playRound(humanSelection, computerSelection)
