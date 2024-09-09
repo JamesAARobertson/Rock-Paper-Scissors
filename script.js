@@ -66,14 +66,21 @@ function playRound(humanChoice, computerChoice) {
 
 
 function playGame() {
-    for(let i=1; i<=5; i++) {
-        console.log(`Round ${i}`)
+    let keepPlaying = true;
+
+    while (keepPlaying) {
         let humanSelection = getHumanChoice();
         let computerSelection = getComputerChoice();
 
         playRound(humanSelection, computerSelection);
         console.log(`Score: You: ${humanScore}, Computer: ${computerScore} `)
+
+        // ask if player wants another round
+        keepPlaying = confirm('Do you want to play another round?')
     }
+
+    console.log('Final Score:');
+    console.log(`You: ${humanScore}, Computer: ${computerScore}`);
 
     if (humanScore > computerScore) {
         console.log('Congratulations, You won!')
