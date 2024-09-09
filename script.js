@@ -2,10 +2,10 @@
 // function to get computer choice
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3)
-    if (computerChoice == 0) {
+    if (computerChoice === 0) {
         return "ROCK";
     }
-    else if (computerChoice == 1) {
+    else if (computerChoice === 1) {
         return "PAPER";
     }
     else {
@@ -15,10 +15,10 @@ function getComputerChoice() {
 
 
 // function to get Player Choice
-function getHumanChoice() {
-    let humanChoice = (prompt('Enter your choice of ROCK, PAPER or SCISSORS')).toUpperCase();
-    return humanChoice
-}
+// function getHumanChoice() {
+//     let humanChoice = (prompt('Enter your choice of ROCK, PAPER or SCISSORS')).toUpperCase();
+//     return humanChoice
+// }
 
 
 // variables to keep track of score
@@ -28,41 +28,52 @@ let computerScore = 0;
 
 // function to play a round
 function playRound(humanChoice, computerChoice) {
+    let result = ''
     if (computerChoice == 'SCISSORS' && humanChoice == 'ROCK') {
         humanScore++
-        console.log('You win! Rock beats Scissors.')
+        result ='You win! Rock beats Scissors.'
     }
     else if (computerChoice == 'ROCK' && humanChoice =='PAPER') {
         humanScore++
-        console.log('You win! Paper beats Rock.')
+        result ='You win! Paper beats Rock.'
     }
     else if (computerChoice == 'PAPER' && humanChoice == 'SCISSORS') {
         humanScore++
-    console.log('You win! Scissors beat Paper.')
+    result ='You win! Scissors beat Paper.'
     }
     else if (computerChoice == 'SCISSORS' && humanChoice == 'PAPER') {
         computerScore++
-        console.log('You lose! Paper loses to Scissors.')
+        result ='You lose! Paper loses to Scissors.'
     }
     else if (computerChoice == 'ROCK' && humanChoice == 'SCISSORS') {
         computerScore++
-        console.log('You lose! Scissors lose to Rock.')
+        result ='You lose! Scissors lose to Rock.'
     }
     else if (computerChoice == 'PAPER' && humanChoice =='ROCK') {
         computerScore++
-        console.log('You lose! Rock loses to Paper.')
+        result ='You lose! Rock loses to Paper.'
     }
     else if (computerChoice == humanChoice) {
-        console.log('It\'s a tie!')
+        result ='It\'s a tie!'
     }
-    else {
-        alert('Invalid input.')
-        return (playRound(getComputerChoice(), getHumanChoice()))
-    }
+    
+    // display result
+    document.getElementById('result').textContent = result;
+
+    // display score
+    document.getElementById('score').textContent= `Score: You: ${humanScore}, Computer: ${computerScore}`;
 }
 
-
-
+// event listeners for buttons
+document.getElementById('rock').addEventListener('click', function() {
+    playRound('ROCK', getComputerChoice());
+})
+document.getElementById('paper').addEventListener('click', function() {
+    playRound('PAPER', getComputerChoice());
+})
+document.getElementById('scissors').addEventListener('click', function() {
+    playRound('SCISSORS', getComputerChoice());
+})
 
 
 function playGame() {
